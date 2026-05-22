@@ -42,7 +42,7 @@ class _PinDialogState extends State<PinDialog> {
         children: [
           // Selector de categoría
           DropdownButtonFormField<String>(
-            value: _selectedCategory,
+            initialValue: _selectedCategory,
             decoration: const InputDecoration(
               labelText: 'Category',
               border: OutlineInputBorder(),
