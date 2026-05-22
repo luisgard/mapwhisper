@@ -16,6 +16,9 @@ jobs:
           flutter-version: '3.44.0'
           channel: 'stable'
       - run: flutter pub get
+      - name: Create firebase_options.dart
+        run: |
+          echo "${{ secrets.FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options.dart
       - run: flutter analyze
       - run: flutter test
       - run: flutter build apk --debug
