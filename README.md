@@ -1,17 +1,104 @@
-# mapwhisper
+# 🌌 MapWhisper
 
-A new Flutter project.
+MapWhisper is an anonymous location-based mobile application built with Flutter.
 
-## Getting Started
+Users can drop pins anywhere on the map and leave thoughts, recommendations, warnings, stories, or random whispers tied to real-world locations.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Features
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- 📍 Interactive map experience
+- 🗺️ Anonymous map pins
+- 💬 Real-time comments and whispers
+- 🔥 Firebase real-time database
+- 🌙 Modern mobile UI
+- ⚡ Cross-platform Flutter application
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🛠️ Tech Stack
+
+- Flutter
+- OpenStreetMap
+- Firebase Firestore
+- Firebase Anonymous Authentication
+- GitHub Actions (CI/CD)
+- Google Play
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/mapwhisper.git
+cd mapwhisper
+```
+
+---
+
+### 2. Install dependencies
+
+```bash
+flutter pub get
+```
+
+---
+
+### 3. Configure Firebase
+
+Create a Firebase project:
+
+👉 https://console.firebase.google.com
+
+Enable:
+
+- Anonymous Authentication
+- Cloud Firestore
+
+Then run:
+
+```bash
+flutterfire configure
+```
+
+This will generate:
+
+```txt
+lib/firebase_options.dart
+```
+
+---
+
+### 4. Run the app
+
+```bash
+flutter run
+```
+
+---
+
+## 📌 Roadmap
+
+- [ ] Interactive map
+- [ ] Anonymous pins
+- [ ] Categories
+- [ ] Pin reactions
+- [ ] Nearby whispers
+- [ ] Moderation system
+- [ ] Push notifications
+- [ ] Dark mode improvements
+
+---
+
+## 📱 Status
+
+🚧 Currently under development.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.

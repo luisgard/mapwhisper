@@ -52,3 +52,10 @@ app.*.map.json
 google-services.json
 GoogleService-Info.plist
 firebase_options.dart
+
+# Firebase CLI
+.firebase/
+.firebaserc
+firebase.json
+.flutter-fire-cli
+*.json.firebase
