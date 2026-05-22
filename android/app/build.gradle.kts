@@ -9,7 +9,6 @@ plugins {
 
 android {
     namespace = "com.mapwhisper.app"
-    applicationId = "com.mapwhisper.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
