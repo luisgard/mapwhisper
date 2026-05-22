@@ -62,11 +62,7 @@ class _MapScreenState extends State<MapScreen> {
                 height: 40,
                 child: GestureDetector(
                   onTap: () => _showPinDetail(context, pin),
-                  child: const Icon(
-                    Icons.location_pin,
-                    color: Colors.red,
-                    size: 40,
-                  ),
+                  child: _categoryIcon(pin.category),
                 ),
               );
             }).toList(),
@@ -142,13 +138,13 @@ class _MapScreenState extends State<MapScreen> {
   Icon _categoryIcon(String category) {
     switch (category) {
       case 'warning':
-        return const Icon(Icons.warning, color: Colors.orange);
+        return const Icon(Icons.warning, color: Colors.orange, size: 30);
       case 'recommendation':
-        return const Icon(Icons.thumb_up, color: Colors.green);
+        return const Icon(Icons.thumb_up, color: Colors.green, size: 30);
       case 'question':
-        return const Icon(Icons.help, color: Colors.blue);
+        return const Icon(Icons.help, color: Colors.blue, size: 30);
       default:
-        return const Icon(Icons.chat_bubble, color: Colors.purple);
+        return const Icon(Icons.location_pin, color: Colors.purple, size: 40);
     }
   }
 
