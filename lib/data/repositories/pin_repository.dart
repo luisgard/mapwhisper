@@ -27,13 +27,14 @@ class PinRepository {
   }
 
   Future<void> reportPin(String pinId) async {
-    try {
-      await _db.collection(_collection).doc(pinId).update({
-        'reportCount': FieldValue.increment(1),
-      });
-    } catch (e) {
-      throw Exception('Error reporting pin: $e');
-    }
+    final doc = await _db.collection(_collection).doc(pinId).get();
+    final currentReports = doc.data()?['reportCount'] ?? 0;
+
+    await _db.collection(_collection).doc(pinId).update({
+      'reportCount': FieldValue.increment(1),
+      // Si tiene 10 o más reportes → se oculta automáticamente
+      'isHidden': currentReports >= 10,
+    });
   }
 
   Future<void> deletePin(String pinId) async {
