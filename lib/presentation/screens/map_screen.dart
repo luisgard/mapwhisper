@@ -32,7 +32,7 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'MapWhisper',
+          'MapWhisper by LMGC',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
