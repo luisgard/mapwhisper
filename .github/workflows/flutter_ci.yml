@@ -40,7 +40,7 @@ jobs:
 
       - name: Decode Android Upload Keystore
         run: |
-          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/app/upload-keystore.jks
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/upload-keystore.jks
 
       - name: Create key.properties
         run: |
@@ -48,7 +48,7 @@ jobs:
           storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
           keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
-          storeFile=app/upload-keystore.jks
+          storeFile=upload-keystore.jks
           EOF
 
       - name: Build App Bundle (.aab) Release
