@@ -62,3 +62,7 @@ firebase.json
 
 *.jks
 *.keystore
+keystore-base64.txt
+android/key.properties
+upload-keystore.jks
+android/.kotlin/
