@@ -52,79 +52,6 @@ jobs:
           EOF
 
       - name: Build App Bundle (.aab) Release
-        run: flutter build appbundle --release
-
-      - name: Upload to Google Play
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.mapwhisper.app
-          releaseFiles: build/app/outputs/bundle/release/app-release.aab
-          track: internal
-          status: completed
-
-  build-ios:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.44.0'
-          channel: 'stable'name: Flutter CI/CD
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build-android:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.44.0'
-          channel: 'stable'
-          
-      - run: flutter pub get
-      
-      - name: Create firebase_options.dart
-        run: |
-          echo "${{ secrets.FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options.dart
-          
-      - name: Create google-services.json
-        run: |
-          cat > android/app/google-services.json << 'ENDOFFILE'
-          ${{ secrets.GOOGLE_SERVICES_JSON }}
-          ENDOFFILE
-
-      - run: flutter analyze
-      - run: flutter test
-
-      - name: Decode Android Upload Keystore
-        run: |
-          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/app/upload-keystore.jks
-
-      - name: Create key.properties
-        run: |
-          cat > android/key.properties << EOF
-          storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
-          keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
-          storeFile=app/upload-keystore.jks
-          EOF
-
-      - name: Build App Bundle (.aab) Release
         run: |
           flutter build appbundle --release \
             --build-number=${{ github.run_number }} \
@@ -148,21 +75,6 @@ jobs:
         with:
           flutter-version: '3.44.0'
           channel: 'stable'
-          
-      - run: flutter pub get
-      
-      - name: Create firebase_options.dart
-        run: |
-          echo "${{ secrets.FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options.dart
-          
-      - name: Create google-services.json
-        run: |
-          cat > android/app/google-services.json << 'ENDOFFILE'
-          ${{ secrets.GOOGLE_SERVICES_JSON }}
-          ENDOFFILE
-          
-      - run: flutter analyze
-      - run: flutter build ios --no-codesign
           
       - run: flutter pub get
       
