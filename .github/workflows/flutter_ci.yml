@@ -115,6 +115,11 @@ jobs:
             --build-number=${{ github.run_number }} \
             --build-name=1.0.${{ github.run_number }} \
             --export-options-plist=ios/ExportOptions.plist
+        env:
+          EXPANDED_CODE_SIGN_IDENTITY: "Apple Distribution: Luis Manuel Garduno Camacho (TQG9J9372M)"
+          CODE_SIGN_STYLE: Manual
+          PROVISIONING_PROFILE_SPECIFIER: "MapWhisper AppStore"
+          DEVELOPMENT_TEAM: TQG9J9372M
 
       - name: Upload to TestFlight
         uses: apple-actions/upload-testflight-build@v1
