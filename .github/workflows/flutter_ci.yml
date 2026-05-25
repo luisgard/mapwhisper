@@ -97,6 +97,11 @@ jobs:
             -P "${{ secrets.IOS_P12_PASSWORD }}" -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple: \
             -s -k "temp123" build.keychain
+          security list-keychains -d user -s build.keychain login.keychain
+
+      - name: Verify Certificate
+        run: |
+          security find-identity -v -p codesigning build.keychain
 
       - name: Install Provisioning Profile
         run: |
