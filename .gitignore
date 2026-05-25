@@ -66,3 +66,5 @@ keystore-base64.txt
 android/key.properties
 upload-keystore.jks
 android/.kotlin/
+private.key
+request.csr
